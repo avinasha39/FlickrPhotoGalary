@@ -78,7 +78,7 @@
                     Width="95"                 
                     Height="23"
                     FontSize="15"
-                    Command="{Binding Path=DataContext.ShowExamAssistCommand, RelativeSource={RelativeSource Self}}"/>
+                    Command="{Binding Path=DataContext.GetPhotoCommand, RelativeSource={RelativeSource Self}}"/>
             </Border>
         </StackPanel>
 

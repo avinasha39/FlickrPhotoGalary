@@ -15,7 +15,7 @@ namespace PhotoSearchProject
 
         public string SearchText { get; set; }
 
-        public Command ShowExamAssistCommand { get; private set; }
+        public Command GetPhotoCommand { get; private set; }
 
         public Flickrresponse flickrresponse
         {
@@ -30,10 +30,10 @@ namespace PhotoSearchProject
         public MainWindowViewModel()
         {
             _photoSearchService = PhotoServiceBootstrap.GetSearchService< Flickrresponse>();
-            ShowExamAssistCommand = new Command(OnExamAssistOpenClicked);
+            GetPhotoCommand = new Command(OnGetPhotoCommandClicked);
         }
 
-        private async void OnExamAssistOpenClicked(object obj)
+        private async void OnGetPhotoCommandClicked(object obj)
         {
             flickrresponse = await _photoSearchService.GetPhotosAsync<Flickrresponse>(SearchText);
         }
