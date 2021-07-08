@@ -12,7 +12,7 @@ jobs:
       name: Checkout Code
      
     - name: Setup MSBuild Path
-      uses: avinasha39/Setup-MSBuild@v1
+      uses: avinasha39/FlickrPhotoGalary@v0.1
        
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
