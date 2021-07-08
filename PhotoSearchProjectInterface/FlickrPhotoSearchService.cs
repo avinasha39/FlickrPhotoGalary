@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 using PhotoSearchProjectInterface.Interface;
-using Unity;
 
 namespace PhotoSearchProjectInterface
 {

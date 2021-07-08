@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace PhotoSearchProjectInterface
 {
     public class Flickrresponse : INotifyPropertyChanged
     {
         private List<PhotoItem> _items;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         ///     
@@ -20,7 +22,6 @@ namespace PhotoSearchProjectInterface
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

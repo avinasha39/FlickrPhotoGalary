@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dt ="clr-namespace:PhotoSearchProjectInterface;assembly=PhotoSearchProjectInterface"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="Flickr Photo Galary" Height="1000" Width="1000" Background="#CDCDD3">
-    <Window.Resources>       
+    <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -37,11 +38,28 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <DataTemplate DataType="{x:Type dt:PhotoItem}">
+            <Border Background="LightGray" 
+                        BorderThickness="5"
+                        BorderBrush="Gray"
+                        CornerRadius="15">
+                <Image 
+                        Source="{Binding media.m}" 
+                        ToolTip="{Binding title}"
+                        Width="150" 
+                        Height="180"/>
+            </Border>
+        </DataTemplate>
     </Window.Resources>
 
-    <StackPanel Orientation="Vertical" Margin="50">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50,0,50,25">
-            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="4">
+    <Grid  Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="4" >
                 <TextBox x:Name="SearchBox"
                     Style="{StaticResource placeHolder}"
                     HorizontalAlignment="Left" 
@@ -50,6 +68,7 @@
                     TextWrapping="Wrap"
                     FontSize="15"
                     BorderThickness="0"
+                    Text="{Binding Path=DataContext.SearchText, RelativeSource={RelativeSource Self}}"
                     VerticalAlignment="Top" Width="315"/>
             </Border>
             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="4" Margin="50,0,0,0">
@@ -59,11 +78,25 @@
                     Width="95"                 
                     Height="23"
                     FontSize="15"
-                    Click="Button_Click"/>
+                    Command="{Binding Path=DataContext.ShowExamAssistCommand, RelativeSource={RelativeSource Self}}"/>
             </Border>
         </StackPanel>
-        <ContentControl Width="Auto" Height="Auto" x:Name="GridContent" HorizontalAlignment="Center">
-            <Grid></Grid>
-        </ContentControl>
-    </StackPanel>
+
+        <ListBox Grid.Row="1" Margin="0,25,0,0" 
+                 ItemsSource="{Binding Path=DataContext.flickrresponse.Items, RelativeSource={RelativeSource Self}}" 
+                 Grid.RowSpan="2"
+                 BorderThickness="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Background="#CDCDD3"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+    </Grid>
 </Window>
