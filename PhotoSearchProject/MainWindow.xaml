@@ -6,7 +6,7 @@
         xmlns:dt ="clr-namespace:PhotoSearchProjectInterface;assembly=PhotoSearchProjectInterface"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Flickr Photo Galary" Height="1000" Width="1000" Background="#CDCDD3">
+        Title="Flickr Photo Galary" Height="1000" Width="1000" >
     <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
@@ -38,17 +38,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <DataTemplate DataType="{x:Type dt:PhotoItem}">
-            <Border Background="LightGray" 
-                        BorderThickness="5"
-                        BorderBrush="Gray"
-                        CornerRadius="15">
+        <DataTemplate DataType="{x:Type dt:PhotoItem}">           
                 <Image 
                         Source="{Binding media.m}" 
                         ToolTip="{Binding title}"
+                        Margin="0,0,0,10"
                         Width="150" 
-                        Height="180"/>
-            </Border>
+                        Height="180"/>            
         </DataTemplate>
     </Window.Resources>
 
@@ -57,7 +53,6 @@
             <RowDefinition Height="27"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="4" >
                 <TextBox x:Name="SearchBox"
@@ -88,7 +83,6 @@
                  BorderThickness="0"
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
-                 Background="#CDCDD3"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>

@@ -42,12 +42,11 @@ namespace PhotoSearchProjectServiceTest
         public void TestGetPhotosAsync_WhenResponseIsInvalidString()
         {
             //Arrange
-            string inputUrl = "SampleUrl";
             _apiClient.Stub(x => x.GetAsync(Arg<string>.Is.Anything)).Return(Task<string>.FromResult(""));
 
             //Act
-            var flickrPhotoSearchService = _container.Resolve<FlickrPhotoSearchService>(new ParameterOverride("URL", inputUrl));
-            var response = flickrPhotoSearchService.GetPhotosAsync<Flickrresponse>(inputUrl);
+            var flickrPhotoSearchService = _container.Resolve<FlickrPhotoSearchService>();
+            var response = flickrPhotoSearchService.GetPhotosAsync<Flickrresponse>("Test");
 
             //Assert
             Assert.AreEqual(null, response.Result.Items);
@@ -60,13 +59,12 @@ namespace PhotoSearchProjectServiceTest
         public void TestGetPhotosAsync_WhenResponseIsValidString()
         {
             //Arrange
-            string inputUrl = "SampleUrl";
             string JsonResponse = "{\"title\": \"Recent Uploads tagged nature\",\"link\":\"https:\\/\\/www.flickr.com\\/photos\\/tags\\/nature\\/\",\"description\": \"\",\"modified\": \"2021-07-07T10:14:29Z\",\"generator\": \"https:\\/\\/www.flickr.com\",\"items\": [{\"title\": \"dsc05215\",\"media\": {\"m\":\"https:\\/\\/live.staticflickr.com\\/65535\\/51296060448_f27cf58729_m.jpg\"},\"date_taken\": \"2021-06-13T14:46:27-08:00\"}]}";
             _apiClient.Stub(x => x.GetAsync(Arg<string>.Is.Anything)).Return(Task<string>.FromResult(JsonResponse));
 
             //Act
-            var flickrPhotoSearchService = _container.Resolve<FlickrPhotoSearchService>(new ParameterOverride("URL", inputUrl));
-            var response = flickrPhotoSearchService.GetPhotosAsync<Flickrresponse>(inputUrl);
+            var flickrPhotoSearchService = _container.Resolve<FlickrPhotoSearchService>();
+            var response = flickrPhotoSearchService.GetPhotosAsync<Flickrresponse>("Test");
 
             //Assert
             Assert.AreEqual(1, response.Result.Items.Count);

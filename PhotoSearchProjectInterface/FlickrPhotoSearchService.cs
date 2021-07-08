@@ -14,10 +14,10 @@ namespace PhotoSearchProjectInterface
         /// <summary>
         ///     Constructor
         /// </summary>
-        public FlickrPhotoSearchService(IApiClient client, string URL)
+        public FlickrPhotoSearchService(IApiClient client)
         {
             _client = client;
-            _apiEndpoint = URL;         
+            _apiEndpoint = "https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";         
         }
 
         public async Task<T> GetPhotosAsync<T>(string queryParamerter)

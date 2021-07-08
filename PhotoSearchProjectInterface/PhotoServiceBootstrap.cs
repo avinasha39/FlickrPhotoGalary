@@ -1,13 +1,11 @@
 ﻿using Unity;
 using PhotoSearchProjectInterface.Interface;
-using Unity.Resolution;
 
 namespace PhotoSearchProjectInterface
 {
     public static class PhotoServiceBootstrap
     {
         private static UnityContainer _container;
-        private const string flickrUrl = "https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
 
         static PhotoServiceBootstrap()
         {
@@ -21,7 +19,7 @@ namespace PhotoSearchProjectInterface
         {
             if(typeof(T) == typeof(Flickrresponse))
             {
-                return _container.Resolve<IPhotoSearchService>(new ParameterOverride("URL", flickrUrl));
+                return _container.Resolve<IPhotoSearchService>();
             }
             return null;
         }
