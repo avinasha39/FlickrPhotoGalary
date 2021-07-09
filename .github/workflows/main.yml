@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v2.2.4
       with:
         name: published_PhotoSearchProject
-        path: D:\a\FlickrPhotoGalary\FlickrPhotoGalary\PhotoSearchProject\bin\Release\Publish
+        path: D:\a\FlickrPhotoGalary\FlickrPhotoGalary\PhotoSearchProject\bin\Debug
