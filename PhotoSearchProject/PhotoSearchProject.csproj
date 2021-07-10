@@ -112,7 +112,7 @@
       <Project>{545E35F5-9407-43DF-818D-FEEE54B1098E}</Project>
       <Name>PhotoSearchInterface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PhotoSearchProjectInterface\PhotoSearchService.csproj">
+    <ProjectReference Include="..\PhotoSearchService\PhotoSearchService.csproj">
       <Project>{F9C5CE8A-8999-47B2-8684-B291F0B6E90F}</Project>
       <Name>PhotoSearchService</Name>
     </ProjectReference>
