@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿#region
+
 using System.ComponentModel;
-using PhotoSearchProjectInterface;
-using PhotoSearchProjectInterface.Interface;
+using PhotoSearchInterface;
+using Unity;
+
+#endregion
 
 namespace PhotoSearchProject
 {
@@ -27,15 +29,23 @@ namespace PhotoSearchProject
             }
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IUnityContainer unityContainer)
         {
-            _photoSearchService = PhotoServiceBootstrap.GetSearchService< Flickrresponse>();
+            _photoSearchService = unityContainer.Resolve<IPhotoServiceBootstrap>().GetSearchService<Flickrresponse>();
             GetPhotoCommand = new Command(OnGetPhotoCommandClicked);
         }
 
         private async void OnGetPhotoCommandClicked(object obj)
         {
-            flickrresponse = await _photoSearchService.GetPhotosAsync<Flickrresponse>(SearchText);
+            try
+            {
+                flickrresponse = await _photoSearchService.GetPhotosAsync<Flickrresponse>(SearchText);
+
+            }
+            catch
+            {
+                //"Error occured please check your internet connection"
+            }
         }
 
         private void OnPropertyChanged(string propertyName)

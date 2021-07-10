@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:dt ="clr-namespace:PhotoSearchProjectInterface;assembly=PhotoSearchProjectInterface"
+        xmlns:dt ="clr-namespace:PhotoSearchInterface;assembly=PhotoSearchInterface"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Flickr Photo Galary" Height="1000" Width="1000" >
+        Title="Flickr Photo Galary" Height="1000" Width="1000" Background="#CDCDD3">
     <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
@@ -38,13 +38,18 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <DataTemplate DataType="{x:Type dt:PhotoItem}">           
+        <DataTemplate DataType="{x:Type dt:PhotoItem}">
+            <Border Background="LightGray" 
+                        BorderThickness="5"
+                        BorderBrush="Gray"
+                        CornerRadius="15">
                 <Image 
                         Source="{Binding media.m}" 
                         ToolTip="{Binding title}"
                         Margin="0,0,0,10"
                         Width="150" 
-                        Height="180"/>            
+                        Height="180"/>
+            </Border>
         </DataTemplate>
     </Window.Resources>
 
@@ -81,6 +86,7 @@
                  ItemsSource="{Binding Path=DataContext.flickrresponse.Items, RelativeSource={RelativeSource Self}}" 
                  Grid.RowSpan="2"
                  BorderThickness="0"
+                 Background="#CDCDD3"
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"

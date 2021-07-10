@@ -1,11 +1,14 @@
-﻿using NUnit.Framework;
-using PhotoSearchProjectInterface;
-using PhotoSearchProjectInterface.Interface;
-using Rhino.Mocks;
+﻿#region
+
 using System.Threading.Tasks;
+using NUnit.Framework;
+using PhotoSearchInterface;
+using PhotoSearchService;
+using Rhino.Mocks;
 using Unity;
 using Unity.Lifetime;
-using Unity.Resolution;
+
+#endregion
 
 namespace PhotoSearchProjectServiceTest
 {

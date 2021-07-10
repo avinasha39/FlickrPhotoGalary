@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28307.1433
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSearchProject", "PhotoSearchProject\PhotoSearchProject.csproj", "{1A2F6698-7C7C-4D73-B78E-47D29D255440}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSearchProjectService", "PhotoSearchProjectInterface\PhotoSearchProjectService.csproj", "{F9C5CE8A-8999-47B2-8684-B291F0B6E90F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSearchService", "PhotoSearchProjectInterface\PhotoSearchService.csproj", "{F9C5CE8A-8999-47B2-8684-B291F0B6E90F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSearchProjectServiceTest", "PhotoSearchProjectServiceTest\PhotoSearchProjectServiceTest.csproj", "{17D1CEA6-38AD-4034-B591-00DDEB88B4C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSearchInterface", "PhotoSearchInterface\PhotoSearchInterface.csproj", "{545E35F5-9407-43DF-818D-FEEE54B1098E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{17D1CEA6-38AD-4034-B591-00DDEB88B4C7}.Release|x64.Build.0 = Release|Any CPU
 		{17D1CEA6-38AD-4034-B591-00DDEB88B4C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{17D1CEA6-38AD-4034-B591-00DDEB88B4C7}.Release|x86.Build.0 = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|x64.Build.0 = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Debug|x86.Build.0 = Debug|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|x64.ActiveCfg = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|x64.Build.0 = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|x86.ActiveCfg = Release|Any CPU
+		{545E35F5-9407-43DF-818D-FEEE54B1098E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

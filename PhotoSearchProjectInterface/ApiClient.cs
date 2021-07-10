@@ -1,15 +1,25 @@
-﻿using PhotoSearchProjectInterface.Interface;
+﻿#region
+
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using PhotoSearchInterface;
 
-namespace PhotoSearchProjectInterface
+#endregion
+
+namespace PhotoSearchService
 {
-    class ApiClient : IApiClient
+    /// <summary>
+    ///     Class to initialize HTTPClient and get response from the passed URL
+    /// </summary>
+    internal class ApiClient : IApiClient
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
 
+        /// <summary>
+        ///     Constructor
+        /// </summary>
         public ApiClient()
         {
             _client = new HttpClient();
@@ -18,15 +28,18 @@ namespace PhotoSearchProjectInterface
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        /// <summary>
+        ///     Method to get response from passed url and return response as JSON string
+        /// </summary>
         public async Task<string> GetAsync(string queryUrl)
         {
-            string responseobj = "";
+            var responseObject = "";
             try
             {
-                HttpResponseMessage response = await _client.GetAsync(queryUrl);
+                var response = await _client.GetAsync(queryUrl);
                 if (response.IsSuccessStatusCode)
                 {
-                    responseobj = await response.Content.ReadAsStringAsync();
+                    responseObject = await response.Content.ReadAsStringAsync();
                 }
                 else
                 {
@@ -37,7 +50,8 @@ namespace PhotoSearchProjectInterface
             {
                 Console.WriteLine(ex);
             }
-            return responseobj;
+
+            return responseObject;
         }
     }
 }

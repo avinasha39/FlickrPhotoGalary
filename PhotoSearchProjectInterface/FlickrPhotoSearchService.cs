@@ -1,15 +1,22 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using PhotoSearchProjectInterface.Interface;
+using PhotoSearchInterface;
 
-namespace PhotoSearchProjectInterface
+#endregion
+
+namespace PhotoSearchService
 {
+    /// <summary>
+    ///     Class to get photo from Flickr API based on topic passed
+    /// </summary>
     public class FlickrPhotoSearchService : IPhotoSearchService
     {
-        IApiClient _client;
         private readonly string _apiEndpoint;
+        private readonly IApiClient _client;
 
         /// <summary>
         ///     Constructor
@@ -17,12 +24,15 @@ namespace PhotoSearchProjectInterface
         public FlickrPhotoSearchService(IApiClient client)
         {
             _client = client;
-            _apiEndpoint = "https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";         
+            _apiEndpoint = "https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
         }
 
+        /// <summary>
+        ///     Get Photos based on search text passed
+        /// </summary>
         public async Task<T> GetPhotosAsync<T>(string queryParamerter)
         {
-            string queryUrl = GetQueryUrl(queryParamerter);
+            var queryUrl = GetQueryUrl(queryParamerter);
 
             var response = await _client.GetAsync(queryUrl);
 
@@ -45,6 +55,5 @@ namespace PhotoSearchProjectInterface
             var queryUrl = uriBuilder.ToString();
             return queryUrl;
         }
-        
     }
 }

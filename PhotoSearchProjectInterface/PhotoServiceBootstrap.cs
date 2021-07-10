@@ -1,26 +1,41 @@
-﻿using Unity;
-using PhotoSearchProjectInterface.Interface;
+﻿#region
 
-namespace PhotoSearchProjectInterface
+using PhotoSearchInterface;
+using Unity;
+
+#endregion
+
+namespace PhotoSearchService
 {
-    public static class PhotoServiceBootstrap
+    /// <summary>
+    ///     Class to bootstrap
+    /// </summary>
+    public class PhotoServiceBootstrap : IPhotoServiceBootstrap
     {
-        private static UnityContainer _container;
+        private readonly IUnityContainer _container;
 
-        static PhotoServiceBootstrap()
+        /// <summary>
+        ///     Constructor
+        /// </summary>
+        /// <param name="container"></param>
+        public PhotoServiceBootstrap(IUnityContainer container)
         {
-            _container = new UnityContainer();
+            _container = container;
 
             _container.RegisterType<IApiClient, ApiClient>();
             _container.RegisterType<IPhotoSearchService, FlickrPhotoSearchService>();
         }
 
-        public static IPhotoSearchService GetSearchService<T>()
+        /// <summary>
+        ///     Method to get IPhotoSearchService instance based on type of response passed
+        /// </summary>
+        public IPhotoSearchService GetSearchService<T>()
         {
-            if(typeof(T) == typeof(Flickrresponse))
+            if (typeof(T) == typeof(Flickrresponse))
             {
                 return _container.Resolve<IPhotoSearchService>();
             }
+
             return null;
         }
     }
