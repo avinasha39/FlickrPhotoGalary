@@ -13,12 +13,19 @@ namespace PhotoSearchProject
         private IPhotoSearchService _photoSearchService;
         private Flickrresponse _flickrresponse;
 
+        /// <summary>
+        ///     Event to be raised when property is changed
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        ///     Property to bind search text box
+        /// </summary>
         public string SearchText { get; set; }
 
-        public Command GetPhotoCommand { get; private set; }
-
+        /// <summary>
+        ///     Property to show photos
+        /// </summary>
         public Flickrresponse flickrresponse
         {
             get => _flickrresponse;
@@ -29,6 +36,14 @@ namespace PhotoSearchProject
             }
         }
 
+        /// <summary>
+        ///     Command to bind with button click
+        /// </summary>
+        public Command GetPhotoCommand { get; private set; }
+
+        /// <summary>
+        ///     Constructor
+        /// </summary>
         public MainWindowViewModel(IUnityContainer unityContainer)
         {
             _photoSearchService = unityContainer.Resolve<IPhotoServiceBootstrap>().GetSearchService<Flickrresponse>();

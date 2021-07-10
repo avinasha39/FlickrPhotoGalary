@@ -46,7 +46,7 @@
                 <Image 
                         Source="{Binding media.m}" 
                         ToolTip="{Binding title}"
-                        Margin="0,0,0,10"
+                        Margin="0,0,0,7"
                         Width="150" 
                         Height="180"/>
             </Border>
