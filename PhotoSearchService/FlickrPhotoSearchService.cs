@@ -39,6 +39,7 @@ namespace PhotoSearchService
             var deserializedProduct = Activator.CreateInstance<T>();
             if (string.IsNullOrEmpty(response))
             {
+                Console.WriteLine("Response is null");
                 return deserializedProduct;
             }
 

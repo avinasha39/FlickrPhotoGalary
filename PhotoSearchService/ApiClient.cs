@@ -43,7 +43,8 @@ namespace PhotoSearchService
                 }
                 else
                 {
-                    Console.WriteLine("");
+                    Console.WriteLine("The response is false");
+                    return null;
                 }
             }
             catch (Exception ex)

@@ -8,39 +8,34 @@
         ResizeMode="NoResize"
         Title="Flickr Photo Galary" Height="1000" Width="1000" Background="#CDCDD3">
     <Window.Resources>
-        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Grid>
-                            <TextBox Text="{Binding Path=Text,
+        <ControlTemplate x:Key="placeHolder" TargetType="{x:Type TextBox}">
+            <Grid>
+                <TextBox Text="{Binding Path=Text,
                                                     RelativeSource={RelativeSource TemplatedParent}, 
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}"
                                      x:Name="textSource" 
                                      Background="Transparent" 
                                      Panel.ZIndex="2" />
-                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
-                                <TextBox.Style>
-                                    <Style TargetType="{x:Type TextBox}">
-                                        <Setter Property="Foreground" Value="Transparent"/>
-                                        <Setter Property="FontSize" Value="15"></Setter>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                                <Setter Property="Foreground" Value="Gray"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                    <TextBox.Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Foreground" Value="Transparent"/>
+                            <Setter Property="FontSize" Value="15"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+            </Grid>
+        </ControlTemplate>
         <DataTemplate DataType="{x:Type dt:PhotoItem}">
             <Border Background="LightGray" 
                         BorderThickness="5"
+                    Margin="0,0,3,3"
                         BorderBrush="Gray"
                         CornerRadius="15">
                 <Image 
@@ -61,7 +56,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="4" >
                 <TextBox x:Name="SearchBox"
-                    Style="{StaticResource placeHolder}"
+                    Template="{StaticResource placeHolder}"
                     HorizontalAlignment="Left" 
                     Height="23"
                     Tag="Please enter title"
@@ -82,7 +77,7 @@
             </Border>
         </StackPanel>
 
-        <ListBox Grid.Row="1" Margin="0,25,0,0" 
+        <ItemsControl Grid.Row="1" Margin="0,25,0,0" 
                  ItemsSource="{Binding Path=DataContext.flickrresponse.Items, RelativeSource={RelativeSource Self}}" 
                  Grid.RowSpan="2"
                  BorderThickness="0"
@@ -90,13 +85,13 @@
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <ListBox.ItemsPanel>
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled">            
+            <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel></WrapPanel>
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 
     </Grid>
 </Window>

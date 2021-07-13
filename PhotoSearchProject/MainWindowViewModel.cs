@@ -1,6 +1,8 @@
 ﻿#region
 
+using System;
 using System.ComponentModel;
+using System.Windows;
 using PhotoSearchInterface;
 using Unity;
 
@@ -40,7 +42,7 @@ namespace PhotoSearchProject
         ///     Command to bind with button click
         /// </summary>
         public Command GetPhotoCommand { get; private set; }
-
+        
         /// <summary>
         ///     Constructor
         /// </summary>
@@ -52,14 +54,10 @@ namespace PhotoSearchProject
 
         private async void OnGetPhotoCommandClicked(object obj)
         {
-            try
+            flickrresponse = await _photoSearchService.GetPhotosAsync<Flickrresponse>(SearchText);
+            if(flickrresponse.Items == null)
             {
-                flickrresponse = await _photoSearchService.GetPhotosAsync<Flickrresponse>(SearchText);
-
-            }
-            catch
-            {
-                //"Error occured please check your internet connection"
+                MessageBox.Show("Check your Internet connectivity");
             }
         }
 
